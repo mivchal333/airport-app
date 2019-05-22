@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="plane" type="pl.edu.pb.airportapp.domain.Plane"*/-->
+<head>
+    <meta charset="UTF-8">
+    <title>planes list</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>planes list:</h1>
+    <div th:if="${not #lists.isEmpty(planes)}">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Street</th>
+                <th></th>
+            </tr>
+            <tr th:each="plane : ${planes}">
+                <td th:text="${plane.id}">2</td>
+                <td th:text="${plane.brand}">Renault</td>
+                <td th:text="${plane.model}">FDD-1231</td>
+                <td th:text="${plane.capacity}">232</td>
+                <td th:text="${plane.range}">2202</td>
+                <td>
+                    <a th:href="${'/plane/' + plane.id }" type="button" class="btn btn-info">Show</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" th:href="${'/plane/new/'}">New plane</a>
+    <div th:if="${#lists.isEmpty(planes)}">
+        <h3>Empty list</h3>
+    </div>
+</div>
+</body>
+</html>
