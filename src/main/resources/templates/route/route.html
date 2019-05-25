@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet" media="screen"/>
+<script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"></script>
+
+
+<body>
+<div class="container">
+    <h2>route details:</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Distance</th>
+        </tr>
+        <tr>
+            <td th:text="${route.id}">12</td>
+            <td th:text="${route.distance}">route Title</td>
+        </tr>
+    </table>
+    <div class="btn-group" role="group">
+        <a th:href="${'/route/delete/' + route.id }" type="button" class="btn btn-success">Delete</a>
+        <a th:href="${'/route/edit/' + route.id }" type="button" class="btn btn-primary">Edit</a>
+    </div>
+    <div class="back-to-list-button">
+        <a th:href="${'/route'}" role="button" class="btn btn-default">Back to list</a>
+    </div>
+</div>
+</body>
+</html>

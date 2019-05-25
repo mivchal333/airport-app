@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>airports list</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Adding airports to route id: <label th:text="${route.id}">1</label></h1>
+    <div th:if="${not #lists.isEmpty(airports)}">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Street</th>
+                <th></th>
+            </tr>
+            <tr th:each="airport : ${airports}">
+                <td th:text="${airport.id}">12</td>
+                <td th:text="${airport.name}">airport Title</td>
+                <td th:text="${airport.country}">airport country</td>
+                <td th:text="${airport.city}">Gniezno</td>
+                <td th:text="${airport.street}">Wrocławska</td>
+                <td>
+                    <a th:href="${'/route/' + route.id +'/add-airport/' + airport.id }" type="button"
+                       class="btn btn-info">Add</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div th:if="${#lists.isEmpty(airports)}">
+    <h3>Empty list</h3></div>
+</body>
+</html>

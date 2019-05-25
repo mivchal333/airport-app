@@ -9,9 +9,14 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer distance;
-    @OneToMany
-    @JoinColumn(name = "route_id")
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "route_airport",
+            joinColumns = @JoinColumn(name = "airport_id"),
+            inverseJoinColumns = @JoinColumn(name = "route_id"))
     private Set<Airport> airports;
+
+
     @OneToOne
     @JoinColumn
     private Flight flight;

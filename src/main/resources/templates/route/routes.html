@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>airports list</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>routes list:</h1>
+    <div th:if="${not #lists.isEmpty(routes)}">
+        <table class="table table-striped">
+            <tr>
+
+                <th>Id</th>
+                <th>Distance</th>
+                <th></th>
+            </tr>
+            <tr th:each="route : ${routes}">
+                <td th:text="${route.id}">12</td>
+                <td th:text="${route.distance}">routes Title</td>
+                <td>
+                    <a th:href="${'/route/' + route.id }" type="button" class="btn btn-info">Show</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <a type="button" class="btn btn-primary" th:href="${'/route/new'}">New route</a>
+</div>
+<div th:if="${#lists.isEmpty(routes)}">
+    <h3>Empty list</h3></div>
+</body>
+</html>

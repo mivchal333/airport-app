@@ -1,6 +1,9 @@
 package pl.edu.pb.airportapp.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Airport {
@@ -11,9 +14,6 @@ public class Airport {
     private String country;
     private String city;
     private String street;
-
-    @ManyToOne
-    private Route route;
 
     public Long getId() {
         return id;
@@ -55,20 +55,12 @@ public class Airport {
         this.street = street;
     }
 
-    public Route getRoute() {
-        return route;
-    }
 
-    public void setRoute(Route route) {
-        this.route = route;
-    }
-
-    public Airport(String name, String country, String city, String street, Route route) {
+    public Airport(String name, String country, String city, String street) {
         this.name = name;
         this.country = country;
         this.city = city;
         this.street = street;
-        this.route = route;
     }
 
     public Airport() {
